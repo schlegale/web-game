@@ -1,7 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://dcxaxg0t15rca"]
 
-[ext_resource type="PackedScene" uid="uid://cu4ohts1lvdr" path="res://menu/loading.tscn" id="1_gj4kt"]
+[sub_resource type="BoxMesh" id="BoxMesh_axdqm"]
 
 [node name="World" type="Node3D"]
 
-[node name="Loading" parent="." instance=ExtResource("1_gj4kt")]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_axdqm")
