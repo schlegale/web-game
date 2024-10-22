@@ -7,6 +7,7 @@ public partial class NetworkManager : Node
 	private const string SERVER_IP = "127.0.0.1";
 	private ENetMultiplayerPeer enetNetworkPeer;
 
+	private PackedScene playerScene = (PackedScene)ResourceLoader.Load("res://player/player.tscn");
 
 	private PackedScene _loadingScene = (PackedScene)ResourceLoader.Load("res://menu/loading.tscn");
 	private Node _activeLoadingScene;
@@ -23,6 +24,7 @@ public partial class NetworkManager : Node
 		GD.Print("Host!!");
 		ShowLoading();
 		CreateServerPeer();
+		AddPlayer(1);
 		HideLoading();
 	}
 
@@ -89,14 +91,50 @@ public partial class NetworkManager : Node
 		}
 	}
 
+	public void AddPlayer(int networkId)
+	{
+		GD.Print("Adding player: " + networkId);
+		CharacterBody3D playerInstance = (CharacterBody3D)playerScene.Instantiate();
+		playerInstance.Name = "Player_" + networkId;
+
+		if (networkId == 1)
+		{
+			playerInstance.Position = new Vector3(-40, 0, 40); // First player
+		}
+		else
+		{
+			playerInstance.Position = new Vector3(-42, 0, 42); // Second player
+		}
+		AddChild(playerInstance);
+	}
+
+	public void RemovePlayer(int networkId)
+	{
+		GD.Print("Removing player: " + networkId);
+		Node playerInstance = GetNodeOrNull("Player_" + networkId);
+		if (playerInstance != null)
+		{
+			RemoveChild(playerInstance);
+			playerInstance.QueueFree();
+			GD.Print("Player " + networkId + " removed successfully.");
+		}
+		else
+		{
+			GD.PrintErr("Player " + networkId + " not found.");
+		}
+
+	}
+
 	public void OnClientConnected(int networkId)
 	{
 		GD.Print("Client connected: " + networkId);
+		AddPlayer(networkId);
 	}
 
 	public void OnClientDisconnected(int networkId)
 	{
 		GD.Print("Client disconnected: " + networkId);
+		RemovePlayer(networkId);
 	}
 
 }

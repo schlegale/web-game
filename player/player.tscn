@@ -5,6 +5,7 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_vd2qt"]
 
 [node name="Player" type="CharacterBody3D"]
+transform = Transform3D(-0.0368013, 0.0258113, -0.998989, 0.0153043, 0.999564, 0.0252624, 0.999205, -0.0143591, -0.0371802, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -13,3 +14,6 @@ shape = SubResource("CapsuleShape3D_we1rn")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_vd2qt")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.00575952, -0.501955, 0.864874, 0, 0.864889, 0.501964, -0.999983, -0.00289107, 0.00498135, 6.56355, 8.75171, 0)
