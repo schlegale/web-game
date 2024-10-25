@@ -1,16 +1,19 @@
 [gd_scene load_steps=14 format=3 uid="uid://dcxaxg0t15rca"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1g120"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cb86a"]
+sky_top_color = Color(0, 0.71605, 0.847526, 1)
+sky_horizon_color = Color(0.5, 0.857444, 0.923646, 1)
+sky_energy_multiplier = 0.0
+ground_bottom_color = Color(0, 0.713726, 0.847059, 1)
+ground_horizon_color = Color(0.5, 0.857444, 0.923646, 1)
 
-[sub_resource type="Sky" id="Sky_khkd3"]
-sky_material = SubResource("ProceduralSkyMaterial_1g120")
+[sub_resource type="Sky" id="Sky_rslmi"]
+sky_material = SubResource("ProceduralSkyMaterial_cb86a")
 
-[sub_resource type="Environment" id="Environment_sgyr7"]
-background_mode = 2
-sky = SubResource("Sky_khkd3")
-tonemap_mode = 2
+[sub_resource type="Environment" id="Environment_077bu"]
+background_color = Color(0.597176, 0.597176, 0.597176, 1)
+background_energy_multiplier = 3.0
+sky = SubResource("Sky_rslmi")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v5yg3"]
 albedo_color = Color(0.0674649, 0.219646, 4.81308e-08, 1)
@@ -49,12 +52,13 @@ size = Vector3(2.35, 3.29, 2.96)
 
 [node name="World" type="Node3D"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_sgyr7")
+environment = SubResource("Environment_077bu")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_color = Color(0.678944, 0.678944, 0.678944, 1)
+shadow_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -68,7 +72,7 @@ mesh = SubResource("BoxMesh_umwrm")
 skeleton = NodePath("../BlueSpawn")
 
 [node name="BlueSpawn" type="MeshInstance3D" parent="Level"]
-transform = Transform3D(0.675359, 0, 0.73749, 0, 1, 0, -0.73749, 0, 0.675359, -41.1881, 0, 41.1833)
+transform = Transform3D(0.685789, -0.00219825, 0.727797, 0.00195707, 0.999997, 0.00117629, -0.727797, 0.00061764, 0.685792, -42.2777, 0, 41.1524)
 mesh = SubResource("BoxMesh_umwrm")
 
 [node name="Mid" type="MeshInstance3D" parent="Level"]
