@@ -12,13 +12,10 @@ public partial class Player
 	public void Move(double delta, ref Vector3 velocity, Camera3D camera)
 	{
 		Vector2 inputDir = Input.GetVector("left", "right", "up", "down");
-		Vector3 forward = camera.GlobalTransform.Basis.Z; // Forward direction (Z is inverted in Godot)
-		Vector3 right = camera.GlobalTransform.Basis.X; // Right direction
+		Vector3 forward = camera.GlobalTransform.Basis.Z;
+		Vector3 right = camera.GlobalTransform.Basis.X;
 
-		// Calculate movement direction relative to the camera's orientation
-		Vector3 direction = (right * inputDir.X + forward * inputDir.Y).Normalized();
-		// Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
-
+		direction = (right * inputDir.X + forward * inputDir.Y).Normalized();
 		currentSpeed = speed;
 
 		if (direction != Vector3.Zero)

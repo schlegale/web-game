@@ -1,19 +1,19 @@
 [gd_scene load_steps=14 format=3 uid="uid://dcxaxg0t15rca"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cb86a"]
-sky_top_color = Color(0, 0.71605, 0.847526, 1)
-sky_horizon_color = Color(0.5, 0.857444, 0.923646, 1)
-sky_energy_multiplier = 0.0
-ground_bottom_color = Color(0, 0.713726, 0.847059, 1)
-ground_horizon_color = Color(0.5, 0.857444, 0.923646, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4f1df"]
 
 [sub_resource type="Sky" id="Sky_rslmi"]
-sky_material = SubResource("ProceduralSkyMaterial_cb86a")
+sky_material = SubResource("ProceduralSkyMaterial_4f1df")
 
 [sub_resource type="Environment" id="Environment_077bu"]
-background_color = Color(0.597176, 0.597176, 0.597176, 1)
-background_energy_multiplier = 3.0
+background_mode = 2
+background_color = Color(0.568284, 0.913499, 1, 1)
+background_energy_multiplier = 1.85
 sky = SubResource("Sky_rslmi")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+glow_enabled = true
+glow_intensity = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v5yg3"]
 albedo_color = Color(0.0674649, 0.219646, 4.81308e-08, 1)

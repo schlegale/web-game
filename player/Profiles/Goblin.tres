@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Profile" load_steps=6 format=3 uid="uid://bdqhl6g2qrguc"]
+
+[ext_resource type="Script" path="res://player/Profiles/Profile.cs" id="1_jiaf5"]
+[ext_resource type="PackedScene" uid="uid://qnlhsyf74bk" path="res://assets/goblin.fbx" id="1_jvve6"]
+[ext_resource type="PackedScene" uid="uid://duhvsqcakavs1" path="res://assets/Powers/proyectile.tscn" id="1_ygjwd"]
+[ext_resource type="Script" path="res://assets/Powers/Power.cs" id="2_naf02"]
+
+[sub_resource type="Resource" id="Resource_dhycb"]
+script = ExtResource("2_naf02")
+Model = ExtResource("1_ygjwd")
+Damage = 100
+Cooldown = 3.0
+
+[resource]
+script = ExtResource("1_jiaf5")
+Health = 1000
+PlayerModel = ExtResource("1_jvve6")
+Powers = [SubResource("Resource_dhycb")]

@@ -1,29 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://tkdlbvornxry"]
+[gd_scene load_steps=6 format=3 uid="uid://tkdlbvornxry"]
 
 [ext_resource type="Script" path="res://player/Player.cs" id="1_4w86t"]
 [ext_resource type="PackedScene" uid="uid://qnlhsyf74bk" path="res://assets/goblin.fbx" id="2_alv8g"]
+[ext_resource type="Resource" uid="uid://bdqhl6g2qrguc" path="res://player/Profiles/Goblin.tres" id="2_hllev"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_we1rn"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_vd2qt"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("Head", "Camera")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("Camera", "Head", "Body")]
 script = ExtResource("1_4w86t")
-Head = NodePath("Head")
+profile = ExtResource("2_hllev")
 Camera = NodePath("Head/Camera3D")
+Head = NodePath("Head")
+Body = NodePath("Body")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_we1rn")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-visible = false
-mesh = SubResource("CapsuleMesh_vd2qt")
 
 [node name="Head" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 0.819152, 0.573577, 0, -0.573576, 0.819152, 0, 8, 9)
 
-[node name="goblin" parent="." instance=ExtResource("2_alv8g")]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_vd2qt")
+
+[node name="Body" type="Node3D" parent="."]
+
+[node name="RayCast3D" type="RayCast3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74982, 0)
+target_position = Vector3(0, 0, -10)
+
+[node name="goblin" parent="Body" instance=ExtResource("2_alv8g")]
